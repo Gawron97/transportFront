@@ -12,12 +12,10 @@ import {TruckDTO} from "../../DTO/TruckDTO";
 export class TrucksComponent implements OnInit {
 
   trucks: TruckDTO[] = [];
-  error: string = '';
-  status: string = 'brak';
-  editForm: boolean = false
   selectedTruck: TruckDTO;
   newTruck: TruckDTO;
   addForm: boolean = false;
+  editForm: boolean = false
 
   constructor(private truckService: TruckClientService) {
     this.selectedTruck = this.initTruck()
@@ -36,9 +34,7 @@ export class TrucksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.truckService.getTrucks().subscribe((trucks) => {
-      this.trucks = trucks;
-    })
+    this.loadDrivers()
   }
 
   selectTruck(truck: TruckDTO) {
@@ -57,20 +53,32 @@ export class TrucksComponent implements OnInit {
     this.addForm = false
   }
 
-  editTruck() {
-    this.editForm = true;
-  }
-
   cancelAdd() {
     this.addForm = false
   }
 
-  cancelEdit() {
-    this.editForm = false
+  editTruck() {
+    this.editForm = true;
   }
 
   saveEditedTruck() {
     this.truckService.editTruck(this.selectedTruck.idTruck, this.selectedTruck)
     this.editForm = false
   }
+
+
+  cancelEdit() {
+    this.editForm = false
+  }
+
+  refreshTruck() {
+    this.loadDrivers()
+  }
+
+  loadDrivers() {
+    this.truckService.getTrucks().subscribe((trucks) => {
+      this.trucks = trucks;
+    })
+  }
+
 }

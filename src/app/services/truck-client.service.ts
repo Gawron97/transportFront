@@ -15,12 +15,12 @@ export class TruckClientService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getTrucks(): Observable<TruckDTO[]> {
+  getTrucks(): Observable<TruckDTO[]> {
     console.log('pobiera')
     return this.httpClient.get<TruckDTO[]>(this.truckUrl);
   }
 
-  public getTruck(): Observable<TruckDTO> {
+  getTruck(): Observable<TruckDTO> {
     console.log('pobieranie jednego')
     return this.httpClient.get<TruckDTO>(this.truckUrl + '/1');
   }
