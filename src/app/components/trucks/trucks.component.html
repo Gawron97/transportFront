@@ -1,0 +1,79 @@
+
+
+<h3 class="p-3 text-center"></h3>
+<div class="container">
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th>ID Truck</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Capacity</th>
+      <th>Status</th>
+      <th>ID Garage</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let truck of trucks" (click)="selectTruck(truck)">
+        <td>{{truck.idTruck}}</td>
+        <td>{{truck.brand}}</td>
+        <td>{{truck.model}}</td>
+        <td>{{truck.capacity}}</td>
+       <td>{{truck.status}}</td>
+        <td>{{truck.idGarage}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <button (click)="addTruck()">Add Truck</button>
+    <button (click)="editTruck()">Edit Truck</button>
+  </div>
+
+  <div *ngIf="editForm" class="mt-3">
+    <form (submit)="saveEditedTruck()">
+      <!-- Pola formularza do wpisywania danych dla nowego trucka -->
+      <div class="form-group">
+        <label>Brand:</label>
+        <input [(ngModel)]="selectedTruck.brand" name="Brand">
+      </div>
+      <div class="form-group">
+        <label for="model">Model:</label>
+        <input type="text" class="form-control" id="model" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+    </form>
+  </div>
+
+  <div *ngIf="addForm" class="mt-3">
+    <form (submit)="saveNewTruck()">
+      <!-- Pola formularza do wpisywania danych dla nowego trucka -->
+      <div class="form-group">
+        <label>Brand:</label>
+        <input [(ngModel)]="newTruck.brand" name="Brand">
+      </div>
+      <div class="form-group">
+        <label for="model">Model:</label>
+        <input [(ngModel)]="newTruck.model" name="Model">
+      </div>
+      <div class="form-group">
+        <label>Capacity:</label>
+        <input [(ngModel)]="newTruck.capacity" name="Capacity">
+      </div>
+      <div class="form-group">
+        <label>Status:</label>
+        <input [(ngModel)]="newTruck.status" name="Status">
+      </div>
+      <div class="form-group">
+        <label>ID Garage:</label>
+        <input [(ngModel)]="newTruck.idGarage" name="ID Garage">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button (click)="cancelAdd()" class="btn btn-secondary">Cancel</button>
+    </form>
+  </div>
+
+</div>
+
