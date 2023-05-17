@@ -31,16 +31,14 @@
 
   <div *ngIf="editForm" class="mt-3">
     <form (submit)="saveEditedTruck()">
-      <!-- Pola formularza do wpisywania danych dla nowego trucka -->
       <div class="form-group">
-        <label>Brand:</label>
-        <input [(ngModel)]="selectedTruck.brand" name="Brand">
+        <label>Capacity:</label>
+        <input [(ngModel)]="selectedTruck.capacity" name="Capacity">
       </div>
       <div class="form-group">
-        <label for="model">Model:</label>
-        <input type="text" class="form-control" id="model" required>
+        <label>ID Garage:</label>
+        <input [(ngModel)]="selectedTruck.idGarage" name="ID Garage">
       </div>
-
       <button type="submit" class="btn btn-primary">Save</button>
       <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
     </form>
@@ -48,7 +46,6 @@
 
   <div *ngIf="addForm" class="mt-3">
     <form (submit)="saveNewTruck()">
-      <!-- Pola formularza do wpisywania danych dla nowego trucka -->
       <div class="form-group">
         <label>Brand:</label>
         <input [(ngModel)]="newTruck.brand" name="Brand">

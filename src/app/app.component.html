@@ -1,2 +1,25 @@
 
-<app-trucks></app-trucks>
+
+<div>
+  <button (click)="openTrucksPanel()">Open Trucks Panel</button>
+  <button (click)="openDriversPanel()">Open Drivers Panel</button>
+  <button (click)="openGaragesPanel()">Open Garages Panel</button>
+  <button (click)="openDeliveriesPanel()">Open Deliveries Panel</button>
+</div>
+
+
+<div *ngIf="trucksPanel">
+  <app-trucks></app-trucks>
+</div>
+
+<div *ngIf="driversPanel">
+  <app-drivers></app-drivers>
+</div>
+
+<div *ngIf="garagesPanel">
+  <app-garages></app-garages>
+</div>
+
+<div *ngIf="deliveriesPanel">
+  <app-deliveries></app-deliveries>
+</div>

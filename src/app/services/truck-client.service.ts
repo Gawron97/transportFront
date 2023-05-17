@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {TruckDTO} from "../DTO/TruckDTO";
+import {TrucksComponent} from "../components/trucks/trucks.component";
 
 
 
@@ -28,6 +29,13 @@ export class TruckClientService {
     console.log('wysylanie post')
     this.httpClient.post(this.truckUrl, newTruck).subscribe(() => {
       console.log('udane zadanie post')
+    })
+  }
+
+  editTruck(idTruck: number, editedTruck: TruckDTO) {
+    console.log('wysylanie patch')
+    this.httpClient.patch(this.truckUrl + '/' + idTruck, editedTruck).subscribe(() => {
+      console.log('udane zadanie patch')
     })
   }
 

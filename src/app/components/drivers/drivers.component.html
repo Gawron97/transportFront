@@ -1,0 +1,32 @@
+
+
+<h3 class="p-3 text-center"></h3>
+<div class="container">
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th>ID Driver</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Salary</th>
+      <th>Age</th>
+      <th>Status</th>
+      <th>ID Garage</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let driver of drivers" (click)="selectDriver(driver)">
+      <td>{{driver.idDriver}}</td>
+      <td>{{driver.name}}</td>
+      <td>{{driver.surname}}</td>
+      <td>{{driver.salary}}</td>
+      <td>{{driver.age}}</td>
+      <td>{{driver.status}}</td>
+      <td>{{driver.idGarage}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <button (click)="addDriver()">Add Driver</button>
+    <button (click)="editDriver()">Edit Driver</button>
+  </div>

@@ -49,16 +49,16 @@ export class TrucksComponent implements OnInit {
 
   addTruck() {
     this.addForm = true
-
   }
 
   saveNewTruck() {
-
-    console.log(this.newTruck.brand)
-
     this.truckService.saveTruck(this.newTruck)
     this.newTruck = this.initTruck()
     this.addForm = false
+  }
+
+  editTruck() {
+    this.editForm = true;
   }
 
   cancelAdd() {
@@ -69,11 +69,8 @@ export class TrucksComponent implements OnInit {
     this.editForm = false
   }
 
-  editTruck() {
-    this.editForm = true;
-  }
-
   saveEditedTruck() {
-
+    this.truckService.editTruck(this.selectedTruck.idTruck, this.selectedTruck)
+    this.editForm = false
   }
 }
