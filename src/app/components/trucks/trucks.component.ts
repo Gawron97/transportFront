@@ -34,7 +34,7 @@ export class TrucksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadDrivers()
+    this.loadTrucks()
   }
 
   selectTruck(truck: TruckDTO) {
@@ -71,11 +71,11 @@ export class TrucksComponent implements OnInit {
     this.editForm = false
   }
 
-  refreshTruck() {
-    this.loadDrivers()
+  refreshTrucks() {
+    this.loadTrucks()
   }
 
-  loadDrivers() {
+  loadTrucks() {
     this.truckService.getTrucks().subscribe((trucks) => {
       this.trucks = trucks;
     })
