@@ -18,20 +18,17 @@ export class GarageClientService {
   }
 
   saveGarage(newGarage: GarageDTO) {
-    this.httpClient.post(this.garageUrl, newGarage).subscribe(() => {
-      console.log('dodawanie garazu')
-    })
-  }
-
-  editGarage(idGarage: number, editedGarage: GarageDTO) {
-    this.httpClient.patch(this.garageUrl + '/' + idGarage, editedGarage).subscribe(() => {
-      console.log('zaktualizowano garaz')
-    })
+    return this.httpClient.post(this.garageUrl, newGarage)
   }
 
   getGarageWithDetails(idGarage: number): Observable<GarageWithDetailsDTO> {
     return this.httpClient.get<GarageWithDetailsDTO>(this.garageUrl + '/with_details/' + idGarage)
   }
+
+  deleteGarage(idGarage: number) {
+    return this.httpClient.delete(this.garageUrl + '/' + idGarage)
+  }
+
 
 
 }

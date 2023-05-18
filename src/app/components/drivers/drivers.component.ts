@@ -46,7 +46,9 @@ export class DriversComponent implements OnInit{
   }
 
   saveNewDriver() {
-    this.driverService.saveDriver(this.newDriver)
+    this.driverService.saveDriver(this.newDriver).subscribe(() => {
+      console.log('driver added')
+    })
     this.newDriver = this.initDriver()
     this.addForm = false
   }
@@ -60,7 +62,9 @@ export class DriversComponent implements OnInit{
   }
 
   saveEditedDriver() {
-    this.driverService.editDriver(this.selectedDriver.idDriver, this.selectedDriver)
+    this.driverService.editDriver(this.selectedDriver.idDriver, this.selectedDriver).subscribe(() => {
+      console.log('driver edited')
+    })
     this.editForm = false
   }
 
@@ -76,5 +80,13 @@ export class DriversComponent implements OnInit{
     this.driverService.getDrivers().subscribe(drivers => {
       this.drivers = drivers
     })
+  }
+
+  deleteDriver() {
+    if(this.selectedDriver != null) {
+      this.driverService.deleteDriver(this.selectedDriver.idDriver).subscribe(() => {
+        console.log('usuwanie drivera')
+      })
+    }
   }
 }

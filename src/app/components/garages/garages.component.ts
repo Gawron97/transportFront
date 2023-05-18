@@ -55,7 +55,9 @@ export class GaragesComponent implements OnInit {
   }
 
   saveNewGarage() {
-    this.garageService.saveGarage(this.newGarage)
+    this.garageService.saveGarage(this.newGarage).subscribe(() => {
+      console.log('dodawanie garazu')
+    })
     this.newGarage = this.initGarage()
     this.addForm = false
   }
@@ -86,5 +88,12 @@ export class GaragesComponent implements OnInit {
 
   cancel() {
     this.detailsForm = false
+  }
+
+  deleteGarage() {
+    if(this.selectedGarage != null)
+      this.garageService.deleteGarage(this.selectedGarage.idGarage).subscribe(() => {
+        console.log('usuwanie garazu')
+      })
   }
 }

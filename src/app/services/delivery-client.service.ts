@@ -17,15 +17,11 @@ export class DeliveryClientService {
   }
 
   saveDelivery(newDelivery: DeliveryDTO) {
-    this.httpClient.post(this.deliveryUrl, newDelivery).subscribe(() => {
-      console.log('dodawanie dostawy')
-    })
+    return this.httpClient.post(this.deliveryUrl, newDelivery)
   }
 
   editDelivery(idDelivery: number, editedDelivery: DeliveryDTO) {
-    this.httpClient.patch(this.deliveryUrl + '/' + idDelivery, editedDelivery).subscribe(() => {
-      console.log('edytowano dostawy')
-    })
+    return this.httpClient.patch(this.deliveryUrl + '/' + idDelivery, editedDelivery)
   }
 
 

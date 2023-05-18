@@ -46,7 +46,9 @@ export class DeliveriesComponent implements OnInit{
   }
 
   saveNewDelivery() {
-    this.deliveryService.saveDelivery(this.newDelivery)
+    this.deliveryService.saveDelivery(this.newDelivery).subscribe(() => {
+      console.log('dodawanie dostawy')
+    })
     this.newDelivery = this.initDelivery()
     this.addForm = false
   }
@@ -60,7 +62,9 @@ export class DeliveriesComponent implements OnInit{
   }
 
   saveEditedDelivery() {
-    this.deliveryService.editDelivery(this.selectedDelivery.idDelivery, this.selectedDelivery)
+    this.deliveryService.editDelivery(this.selectedDelivery.idDelivery, this.selectedDelivery).subscribe(() => {
+      console.log('edytowano dostawy')
+    })
     this.editForm = false
   }
 

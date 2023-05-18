@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {TruckClientService} from "../../services/truck-client.service";
-import {Observable} from "rxjs";
-import {FormsModule} from "@angular/forms";
 import {TruckDTO} from "../../DTO/TruckDTO";
 
 @Component({
@@ -38,9 +36,7 @@ export class TrucksComponent implements OnInit {
   }
 
   selectTruck(truck: TruckDTO) {
-    console.log('selecting')
     this.selectedTruck = {...truck};
-    console.log(this.selectedTruck.brand)
   }
 
   addTruck() {
@@ -48,7 +44,9 @@ export class TrucksComponent implements OnInit {
   }
 
   saveNewTruck() {
-    this.truckService.saveTruck(this.newTruck)
+    this.truckService.saveTruck(this.newTruck).subscribe(() => {
+      console.log('udane zadanie post')
+    })
     this.newTruck = this.initTruck()
     this.addForm = false
   }
@@ -62,10 +60,11 @@ export class TrucksComponent implements OnInit {
   }
 
   saveEditedTruck() {
-    this.truckService.editTruck(this.selectedTruck.idTruck, this.selectedTruck)
+    this.truckService.editTruck(this.selectedTruck.idTruck, this.selectedTruck).subscribe(() => {
+      console.log('udane zadanie patch')
+    })
     this.editForm = false
   }
-
 
   cancelEdit() {
     this.editForm = false
@@ -81,4 +80,10 @@ export class TrucksComponent implements OnInit {
     })
   }
 
+  deleteTruck() {
+    if(this.selectedTruck != null)
+      this.truckService.deleteTruck(this.selectedTruck.idTruck).subscribe(() => {
+        console.log('usuwanie trucka')
+      })
+  }
 }

@@ -16,27 +16,19 @@ export class TruckClientService {
   constructor(private httpClient: HttpClient) { }
 
   getTrucks(): Observable<TruckDTO[]> {
-    console.log('pobiera')
     return this.httpClient.get<TruckDTO[]>(this.truckUrl);
   }
 
-  getTruck(): Observable<TruckDTO> {
-    console.log('pobieranie jednego')
-    return this.httpClient.get<TruckDTO>(this.truckUrl + '/1');
-  }
-
   saveTruck(newTruck: TruckDTO) {
-    console.log('wysylanie post')
-    this.httpClient.post(this.truckUrl, newTruck).subscribe(() => {
-      console.log('udane zadanie post')
-    })
+    return this.httpClient.post(this.truckUrl, newTruck)
   }
 
   editTruck(idTruck: number, editedTruck: TruckDTO) {
-    console.log('wysylanie patch')
-    this.httpClient.patch(this.truckUrl + '/' + idTruck, editedTruck).subscribe(() => {
-      console.log('udane zadanie patch')
-    })
+    return this.httpClient.patch(this.truckUrl + '/' + idTruck, editedTruck)
+  }
+
+  deleteTruck(idTruck: number) {
+    return this.httpClient.delete(this.truckUrl + '/' + idTruck)
   }
 
 }

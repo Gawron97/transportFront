@@ -17,15 +17,15 @@ export class DriverClientService {
   }
 
   saveDriver(newDriver: DriverDTO) {
-    this.httpClient.post(this.driverUrl, newDriver).subscribe(() => {
-      console.log('driver added')
-    })
+    return this.httpClient.post(this.driverUrl, newDriver)
   }
 
   editDriver(idDriver: number, editedDriver: DriverDTO) {
-    this.httpClient.patch(this.driverUrl + '/' + idDriver, editedDriver).subscribe(() => {
-      console.log('driver edited')
-    })
+    return this.httpClient.patch(this.driverUrl + '/' + idDriver, editedDriver)
+  }
+
+  deleteDriver(idDriver: number) {
+    return this.httpClient.delete(this.driverUrl + '/' + idDriver)
   }
 
 
