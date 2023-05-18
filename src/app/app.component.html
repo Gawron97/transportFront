@@ -23,3 +23,9 @@
 <div *ngIf="deliveriesPanel">
   <app-deliveries></app-deliveries>
 </div>
+
+
+<div>
+  {{errorHandler.error}}
+  <button (click)="deleteError()">Delete Error</button>
+</div>

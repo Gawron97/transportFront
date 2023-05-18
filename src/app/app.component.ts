@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ErrorHandler} from "./components/errors/ErrorHandler";
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(public errorHandler: ErrorHandler) {
+    this.errorHandler = errorHandler
+  }
+
   title = 'transportFront';
 
   trucksPanel: boolean = true
@@ -40,4 +46,7 @@ export class AppComponent {
     this.deliveriesPanel = true
   }
 
+  deleteError() {
+    this.errorHandler.error = ''
+  }
 }
